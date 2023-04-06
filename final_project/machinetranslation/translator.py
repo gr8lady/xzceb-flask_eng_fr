@@ -22,8 +22,10 @@ def english_to_french(english_text):
     model_id = 'en-fr'
     text_to_translate = english_text
     french_text = language_translator.translate(text=text_to_translate,model_id=model_id).get_result()
-    print(json.dumps(french_text, indent=2, ensure_ascii=False))
-    return french_text
+  #  print(json.dumps(french_text['translations'][0]))
+    traduccion = french_text['translations'][0]['translation']
+    print(traduccion)
+    return traduccion
 
 
 def french_to_english(french_text):
@@ -31,12 +33,13 @@ def french_to_english(french_text):
     model_id = 'fr-en'
     text_to_translate = french_text
     english_text = language_translator.translate(text=text_to_translate,model_id=model_id).get_result()
-    print(json.dumps(english_text, indent=2, ensure_ascii=False))
-    return english_text
+   # print(json.dumps(english_text['translations'][0]['translation']))
+    traduccion = english_text['translations'][0]['translation']
+    print(traduccion)
+    return traduccion
 
 
 #calling the functions
 english_to_french('Hello')
 french_to_english('Bonjour')
-
 
